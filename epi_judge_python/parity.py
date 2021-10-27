@@ -2,8 +2,11 @@ from test_framework import generic_test
 
 
 def parity(x: int) -> int:
-    # TODO - you fill in here.
-    return 0
+    numBits = 0
+    while x:
+        numBits += x & 1
+        x >>= 1
+    return 0 if numBits % 2 == 0 else 1
 
 
 if __name__ == '__main__':
