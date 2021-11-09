@@ -2,11 +2,11 @@ from test_framework import generic_test
 
 
 def parity(x: int) -> int:
-    numBits = 0
+    parity = 0
     while x:
-        numBits += x & 1
-        x >>= 1
-    return 0 if numBits % 2 == 0 else 1
+        x = x&(x-1)
+        parity ^= 1
+    return parity
 
 
 if __name__ == '__main__':
