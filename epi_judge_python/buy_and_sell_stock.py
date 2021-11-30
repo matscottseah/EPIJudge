@@ -4,15 +4,11 @@ from test_framework import generic_test
 
 
 def buy_and_sell_stock_once(prices: List[float]) -> float:
-    currentMax = 0.0
-    buy = sell = 0
-    while sell < len(prices):
-        diff = prices[sell] - prices[buy]
-        if diff < 0:
-            buy = sell
-        else:
-            currentMax = max(diff, currentMax)
-            sell += 1
+    minVal, currentMax = float('inf'), 0.0
+    for price in prices:
+        diff = price - minVal
+        currentMax = max(currentMax, diff)
+        minVal = min(minVal, price)
         
     return currentMax
 
