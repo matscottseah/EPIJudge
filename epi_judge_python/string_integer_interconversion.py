@@ -1,12 +1,12 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
-
+import string
 
 def int_to_string(x: int) -> str:
     result = []
     num, negative = abs(x), False if x >= 0 else True
     while num:
-        result.insert(0, str(num % 10))
+        result.insert(0, chr(ord('0') + num % 10))
         num //= 10
 
     if negative:
@@ -24,7 +24,7 @@ def string_to_int(s: str) -> int:
     
     result = 0
     while i < len(s):
-        result = (result * 10) + int(s[i])
+        result = (result * 10) + string.digits.index(s[i])
         i += 1
 
     return result * sign
