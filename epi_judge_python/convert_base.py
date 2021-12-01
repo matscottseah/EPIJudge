@@ -42,10 +42,8 @@ def convert_base(num_as_string: str, b1: int, b2: int) -> str:
     if num_as_string == '0':
         return '0'
 
+    negative = True if num_as_string[0] == '-' else False
     decimal = 0
-    negative = False
-    if num_as_string[0] == '-':
-        negative = True
 
     for i in range(len(num_as_string)):
         if num_as_string[len(num_as_string) - 1 - i] == '-':
