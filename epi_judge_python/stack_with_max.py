@@ -1,22 +1,26 @@
+from typing import NamedTuple
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
+import collections
 
 
 class Stack:
+    elementWithMax = collections.namedtuple('elementWithMax', ('element', 'max'))
+
+    def __init__(self) -> None:
+        self.stack: list[Stack.elementWithMax] = []
+
     def empty(self) -> bool:
-        # TODO - you fill in here.
-        return True
+        return len(self.stack) == 0
 
     def max(self) -> int:
-        # TODO - you fill in here.
-        return 0
+        return self.stack[-1].max
 
     def pop(self) -> int:
-        # TODO - you fill in here.
-        return 0
+        return self.stack.pop().element
 
     def push(self, x: int) -> None:
-        # TODO - you fill in here.
+        self.stack.append(Stack.elementWithMax(x, x if self.empty() else max(x, self.max())))
         return
 
 
